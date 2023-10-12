@@ -78,5 +78,5 @@ def update_table(input_value):
     prevent_initial_call=True,
 )
 def func(n_clicks,df_,input_value):
-    if n_clicks>0 and n_clicks is not None:
+    if n_clicks is not None and n_clicks > 0:
         return dcc.send_data_frame(pd.DataFrame(df_).to_csv, f"{str(input_value)}_{str(date.today())}.csv")

@@ -64,8 +64,8 @@ def update_figure(input_value):
     samples = [iv0 for iv0 in meta_loc.index if iv0 in dat.keys()]
     meta_loc = meta_loc.loc[samples]
     df0 = pd.concat([pd.Series(dat[iv0],name=iv0).to_frame() for iv0 in samples],axis=1).T
-    df0 = df0.drop(columns=['Other']) #account for rounding/thresholding
-    df0['Other'] = (1.- df0.sum(axis=1)) #account for rounding/thresholding
+    #df0 = df0.drop(columns=['Other']) #account for rounding/thresholding
+    #df0['Other'] = (1.- df0.sum(axis=1)) #account for rounding/thresholding
     cols = df0.columns
     # print(df0)
     df0['Sample'] = meta_loc['collection_date']
@@ -94,5 +94,5 @@ def update_figure(input_value):
     prevent_initial_call=True,
 )
 def func(n_clicks,df_,input_value):
-    if n_clicks>0 and n_clicks is not None:
+    if n_clicks is not None and n_clicks > 0:
         return dcc.send_data_frame(pd.DataFrame(df_).to_csv, f"{str(input_value)}_{str(date.today())}.csv")

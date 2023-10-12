@@ -53,8 +53,9 @@ def update_figure(input_value):
     # print(dat[input_value.split(',')[0]])
     df0 = pd.concat([pd.Series(dat[iv0],name=iv0).to_frame() for iv0 in input_value.split(',')],axis=1).T
     cols = df0.columns
-    df0 = df0.drop(columns=['Other']) #account for rounding/thresholding
-    df0['Other'] = (1.- df0.sum(axis=1)) #account for rounding/thresholding
+  
+    #df0 = df0.drop(columns=['Other']) #account for rounding/thresholding
+    #df0['Other'] = (1.- df0.sum(axis=1)) #account for rounding/thresholding
     print(df0)
     df0['Sample'] = input_value.split(',')
     fig = px.bar(df0,x='Sample',y=df0.columns, width = 600,height=600)
