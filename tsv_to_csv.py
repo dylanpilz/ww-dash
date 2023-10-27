@@ -1,7 +1,7 @@
 import csv
 
-tsv_file = open("app/frontend_data/aggregate_variants.tsv", 'r')
-csv_file = open("app/frontend_data/aggregate_variants.csv", 'w')
+tsv_file = open("app/aggregate_variants.tsv", 'r')
+csv_file = open("app/aggregate_variants.csv", 'w')
 
 tsv_reader = csv.reader(tsv_file, delimiter='\t')
 csv_writer = csv.writer(csv_file)
